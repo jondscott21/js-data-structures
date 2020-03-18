@@ -33,6 +33,33 @@ class SLL {
             cur = cur.next
         }
     }
+    insertAt(data, idx) {
+        let cur = this.head
+        let prev = null
+        let count = 0
+        let newNode = new Node(data)
+
+        if(idx === 0) {
+            this.head = newNode
+            newNode.next = cur
+            return this.head
+        }
+        while(cur) {
+            // console.log(cur, prev, count)
+            if(count === idx) {
+                prev.next = newNode
+                newNode.next = cur
+                return this.head
+            }
+            if(!cur.next) {
+                cur.next = newNode
+                return this.head
+            }
+            prev = cur
+            cur = cur.next
+            count++
+        }
+    }
 }
 
 let sll = new SLL()
@@ -44,4 +71,5 @@ n1.next = n2
 n2.next = n3
 sll.addToEnd(5)
 sll.removeNode(1)
+sll.insertAt(10, 0)
 console.log(sll.head)

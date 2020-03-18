@@ -14,6 +14,11 @@ class SLL {
             cur = cur.next
         }
     }
+    addtoHead(data) {
+        let prevHead = this.head
+        this.head = new Node(data)
+        this.head.next = prevHead
+    }
     removeNode(node) {
         if(node === this.head || node === this.head.value) {
             this.head = this.head.next
@@ -45,7 +50,6 @@ class SLL {
             return this.head
         }
         while(cur) {
-            // console.log(cur, prev, count)
             if(count === idx) {
                 prev.next = newNode
                 newNode.next = cur
@@ -60,6 +64,24 @@ class SLL {
             count++
         }
     }
+    removeAt(location) {
+        let cur = this.head
+        let prev = null
+        let count = 0
+        if(location === 0) {
+            this.head = this.head.next
+            return this.head
+        }
+        while(cur) {
+            if(count === location) {
+                prev.next = cur.next
+                return this.head
+            }
+            count++
+            prev = cur
+            cur = cur.next
+        }
+    }
 }
 
 let sll = new SLL()
@@ -72,4 +94,6 @@ n2.next = n3
 sll.addToEnd(5)
 sll.removeNode(1)
 sll.insertAt(10, 0)
+sll.removeAt(1)
+
 console.log(sll.head)

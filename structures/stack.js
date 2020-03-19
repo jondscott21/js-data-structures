@@ -10,3 +10,5 @@ class Stack {
         this.storage.push(item)
     }
 }
+
+module.exports = Stack

@@ -142,3 +142,4 @@ sll.addToEnd(4)
 
 console.log(sll.head)
 console.log(sll.length())
+console.log(sll.size)

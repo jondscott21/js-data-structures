@@ -86,6 +86,8 @@ class Tree {
     }
 }
 
+module.exports = Tree
+
 let root = new Tree(5)
 
 root.add(3)

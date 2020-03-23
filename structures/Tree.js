@@ -56,7 +56,7 @@ class Tree {
         }
         if(data === this.data) {
             if(!this.left && !this.right) {
-               console.log('root')
+               delete this
             }
         }
         if(data < this.data) {
@@ -97,10 +97,10 @@ root.add(6)
 root.add(9)
 root.add(8)
 root.add(10)
-root.remove(7)
+root.remove(5)
 // console.log(root.contains(5))
 // console.log(root.contains(1))
 // console.log(root.contains(6))
 // console.log(root.contains(8))
 // console.log(root.contains(2))
-console.log(root.right)
+console.log(root)

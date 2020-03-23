@@ -6,6 +6,10 @@ class SLL {
         this.size = 0
     }
     addToEnd(data) {
+        if(!this.head) {
+            this.addtoHead(data)
+            return this.head
+        }
         let cur = this.head
         while(cur) {
             if(!cur.next) {
@@ -101,15 +105,14 @@ class SLL {
 module.exports = SLL
 
 let sll = new SLL()
-let n1 = new Node(1)
-let n2 = new Node(2)
-let n3 = new Node(3)
-sll.head = n1
-n1.next = n2
-n2.next = n3
+sll.addToEnd(1)
+sll.addToEnd(2)
+sll.addToEnd(3)
 sll.addToEnd(5)
+console.log(sll.length())
 sll.removeNode(1)
 sll.insertAt(10, 0)
 sll.removeAt(1)
 
+console.log(sll.length())
 console.log(sll.head)

@@ -5,7 +5,6 @@ class Tree {
         this.right = null
     }
     add(data) {
-        if(data) console.log(data)
         if(!this.data) {
             if(data.data) {
                 this.data = data.data
@@ -84,6 +83,16 @@ class Tree {
             }
         }
     }
+    dftRecursive(tree) {
+        if(tree.left) {
+            this.dftRecursive(tree.left)
+        }
+        console.log(tree.data)
+        if(tree.right) {
+            this.dftRecursive(tree.right)
+        }
+        return
+    }
 }
 
 module.exports = Tree
@@ -99,10 +108,11 @@ root.add(6)
 root.add(9)
 root.add(8)
 root.add(10)
-root.remove(5)
+root.dftRecursive(root)
+// root.remove(5)
 // console.log(root.contains(5))
 // console.log(root.contains(1))
 // console.log(root.contains(6))
 // console.log(root.contains(8))
 // console.log(root.contains(2))
-console.log(root)
+// console.log(root)

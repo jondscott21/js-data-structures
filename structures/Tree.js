@@ -97,7 +97,17 @@ class Tree {
     }
     bft(tree) {
         let q = new Queue()
-        while()
+        q.enqueue(tree)
+        while(q.length > 0) {
+            let node = q.dequeue()
+            console.log(node.value.data)
+            if(node.value.left) {
+                q.enqueue(node.value.left)
+            }
+            if(node.value.right) {
+                q.enqueue(node.value.right)
+            }
+        }
     }
 }
 
@@ -114,7 +124,8 @@ root.add(6)
 root.add(9)
 root.add(8)
 root.add(10)
-root.dftRecursive(root)
+// root.dftRecursive(root)
+root.bft(root)
 // root.remove(5)
 // console.log(root.contains(5))
 // console.log(root.contains(1))

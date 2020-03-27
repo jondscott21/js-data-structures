@@ -1,3 +1,5 @@
+const Queue = require('./Queue')
+
 class Tree {
     constructor(data) {
         this.data = data
@@ -92,6 +94,10 @@ class Tree {
             this.dftRecursive(tree.right)
         }
         return
+    }
+    bft(tree) {
+        let q = new Queue()
+        while()
     }
 }
 

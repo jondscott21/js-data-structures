@@ -1,4 +1,5 @@
 const Queue = require('./Queue')
+const Stack = require('./Stack')
 
 class Tree {
     constructor(data) {
@@ -109,7 +110,19 @@ class Tree {
             }
         }
     }
-}
+    dft(tree) {
+        let s = new Stack()
+        s.push(tree)
+        while(s.length > 0) {
+            let node = s.pop()
+            if(node.left) {
+                s.push(node.left)
+            }
+            if(node.right) {
+                s.push(node.right)
+            }
+        }
+    }
 
 module.exports = Tree
 

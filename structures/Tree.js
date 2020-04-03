@@ -123,7 +123,28 @@ class Tree {
             }
         }
     }
-
+    contains(target) {
+        if(this.data === target) {
+            return true
+        }
+        if(this.data > target) {
+            if(this.left) {
+                return this.left.contains(target)
+            }
+            else {
+                return false
+            }
+        }
+        if(this.data < target) {
+            if(this.right) {
+                return this.right.contains(target)
+            }
+            else {
+                return false
+            }
+        }
+    }
+}
 module.exports = Tree
 
 let root = new Tree(5)
@@ -138,11 +159,11 @@ root.add(9)
 root.add(8)
 root.add(10)
 // root.dftRecursive(root)
-root.bft(root)
+// root.bft(root)
 // root.remove(5)
 // console.log(root.contains(5))
 // console.log(root.contains(1))
 // console.log(root.contains(6))
 // console.log(root.contains(8))
 // console.log(root.contains(2))
-// console.log(root)
+console.log(root.contains(11))

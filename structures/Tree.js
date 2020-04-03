@@ -144,16 +144,32 @@ class Tree {
             }
         }
     }
+    getMin() {
+        if(!this.left) {
+            return this.data
+        }
+        else {
+            return this.left.getMin()
+        }
+    }
+    getMax() {
+        if(!this.right) {
+            return this.data
+        }
+        else {
+            return this.right.getMax()
+        }
+    }
 }
 module.exports = Tree
 
 let root = new Tree(5)
 
 root.add(3)
-root.add(4)
-root.add(1)
-root.add(2)
-root.add(7)
+// root.add(4)
+// root.add(1)
+// root.add(2)
+// root.add(7)
 root.add(6)
 root.add(9)
 root.add(8)
@@ -166,4 +182,5 @@ root.add(10)
 // console.log(root.contains(6))
 // console.log(root.contains(8))
 // console.log(root.contains(2))
-console.log(root.contains(11))
+// console.log(root.contains(11))
+console.log(root.getMin())

@@ -16,30 +16,35 @@ class MinHeap {
         this.size++
     }
     heapify() {
-        if(this.size % 2 === 0) {
-            let idx = this.size / 2
-            if (this.storage[this.size] < this.storage[idx]) {
-                let temp = this.storage[idx]
-                this.storage[idx] = this.storage[this.size]
-                this.storage[this.size] = temp
-            } 
+        let parentIdx = Math.floor(this.size / 2)
+        if(this.size > 0 && this.size % 2 === 0) {
+            parentIdx--
         }
-        else if(this.size % 2 !== 0) {
-            let idx = (this.size - 1) / 2
-            if (this.storage[this.size] < this.storage[idx]) {
-                let temp = this.storage[idx]
-                this.storage[idx] = this.storage[this.size]
-                this.storage[this.size] = temp
-            } 
+        console.log(parentIdx)
+        let childIdx = this.size
+        while(this.storage[childIdx] < this.storage[parentIdx]) {
+            console.log(this.storage, childIdx, this.storage[childIdx], parentIdx, this.storage[parentIdx])
+            console.log('hi')
+            // console.log(this.storage[childIdx], this.storage[parentIdx])
+            let tempVal = this.storage[parentIdx]
+            this.storage[parentIdx] = this.storage[childIdx]
+            this.storage[childIdx] = tempVal
+            childIdx = parentIdx
+            parentIdx = Math.floor(parentIdx / 2)
+            if(childIdx > 0 && childIdx % 2 === 0) {
+                parentIdx--
+            }
         }
+        console.log(this.storage)
     }
 }
 
 let h = new MinHeap(10)
 h.insert(4)
-h.insert(1)
 h.insert(3)
 h.insert(7)
 h.insert(5)
+h.insert(1)
 h.insert(9)
-console.log(h)
+h.insert(2)
+// console.log(h)

@@ -14,28 +14,33 @@ class MinHeap {
         this.storage[this.size] = value
         this.heapify()
         this.size++
+        if(this.size === this.capacity) {
+            this.increaseCapacity()
+        }
     }
     heapify() {
         let parentIdx = Math.floor(this.size / 2)
         if(this.size > 0 && this.size % 2 === 0) {
             parentIdx--
         }
-        console.log(parentIdx)
         let childIdx = this.size
         while(this.storage[childIdx] < this.storage[parentIdx]) {
-            console.log(this.storage, childIdx, this.storage[childIdx], parentIdx, this.storage[parentIdx])
-            console.log('hi')
-            // console.log(this.storage[childIdx], this.storage[parentIdx])
             let tempVal = this.storage[parentIdx]
             this.storage[parentIdx] = this.storage[childIdx]
             this.storage[childIdx] = tempVal
+
             childIdx = parentIdx
             parentIdx = Math.floor(parentIdx / 2)
             if(childIdx > 0 && childIdx % 2 === 0) {
                 parentIdx--
             }
         }
-        console.log(this.storage)
+    }
+    increaseCapacity() {
+        let tempStorage = [...this.storage]
+        this.capacity *= 2
+        this.storage = new Array(this.capacity)
+        tempStorage.forEach((el, i) => this.storage[i] = el)
     }
 }
 
@@ -47,4 +52,9 @@ h.insert(5)
 h.insert(1)
 h.insert(9)
 h.insert(2)
-// console.log(h)
+h.insert(11)
+h.insert(23)
+h.insert(55)
+h.insert(60)
+
+console.log(h)

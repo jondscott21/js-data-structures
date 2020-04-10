@@ -42,6 +42,14 @@ class MinHeap {
         this.storage = new Array(this.capacity)
         tempStorage.forEach((el, i) => this.storage[i] = el)
     }
+    delete(value) {
+        for(let i = 0; i < this.storage.length; i++) {
+            if(this.storage[i] === value) {
+                let left = (i*2) + 1
+                let right = (i*2) + 2
+            }
+        }
+    }
 }
 
 let h = new MinHeap(10)

@@ -87,12 +87,12 @@ class SLL {
                     let removed = this.head
                     this.head = null
                     this.size--
-                    return removed
+                    return removed.value
                 }
                 else {
                     prev.next = null
                     this.size--
-                    return cur
+                    return cur.value
                 }
             }
             prev = cur

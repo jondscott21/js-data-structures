@@ -1,3 +1,5 @@
+const Queue = require('./Queue')
+
 class Graph {
     constructor() {
         this.vertices = {}
@@ -30,10 +32,32 @@ class Graph {
     getEdges(vertex) {
         return this.vertices[vertex]
     }
+    bft(startingVertex) {
+        let q = new Queue()
+        q.enqueue(startingVertex)
+        let visited = new Set()
+        while(q.length > 0) {
+            let vertex = q.dequeue()
+            if(!visited.has(vertex)) {
+                console.log(vertex)
+                visited.add(vertex)
+                this.vertices[vertex].forEach(edge => q.enqueue(edge))
+            }
+        }
+    }
 }
 let g = new Graph()
 g.addVertices(1)
 g.addVertices(2)
-g.addEdge(2, 1)
-console.log(g.getEdges(2))
-console.log(g)
+g.addVertices(3)
+g.addVertices(4)
+g.addVertices(5)
+g.addVertices(6)
+g.addEdge(1, 2)
+g.addEdge(2, 4)
+g.addEdge(1, 3)
+g.addEdge(2, 5)
+g.addEdge(3, 6)
+console.log(g.getEdges(1))
+// console.log(g)
+g.bft(1)

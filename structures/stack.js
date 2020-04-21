@@ -1,5 +1,5 @@
 class Stack {
-    constuctor() {
+    constructor() {
         this.storage = []
         this.length = 0
     }
@@ -10,7 +10,6 @@ class Stack {
     push(item) {
         this.length++
         this.storage.push(item)
-        this
     }
 }
 

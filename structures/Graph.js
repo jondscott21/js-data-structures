@@ -1,4 +1,5 @@
 const Queue = require('./Queue')
+const Stack = require('./Stack')
 
 class Graph {
     constructor() {
@@ -45,6 +46,19 @@ class Graph {
             }
         }
     }
+    dft_iterative(startingVertex) {
+        let s = new Stack()
+        s.push(startingVertex)
+        let visited = new Set()
+        while(s.length > 0) {
+            let vertex = s.pop()
+            if(!visited.has(vertex)) {
+                console.log(vertex)
+                visited.add(vertex)
+                this.vertices[vertex].forEach(edge => s.push(edge))
+            }
+        }
+    }
 }
 let g = new Graph()
 g.addVertices(1)
@@ -61,3 +75,4 @@ g.addEdge(3, 6)
 console.log(g.getEdges(1))
 // console.log(g)
 g.bft(1)
+g.dft_iterative(1)

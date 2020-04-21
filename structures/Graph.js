@@ -46,7 +46,7 @@ class Graph {
             }
         }
     }
-    dft_iterative(startingVertex) {
+    dftIterative(startingVertex) {
         let s = new Stack()
         s.push(startingVertex)
         let visited = new Set()
@@ -57,6 +57,18 @@ class Graph {
                 visited.add(vertex)
                 this.vertices[vertex].forEach(edge => s.push(edge))
             }
+        }
+    }
+    dftRecursive(startingVertex, visited=null) {
+        if(visited === null) {
+            visited = new Set()
+        }
+        if(!visited.has(startingVertex)) {
+            visited.add(startingVertex)
+            console.log(startingVertex)
+            this.vertices[startingVertex].forEach(edge => {
+                this.dftRecursive(edge, visited)
+            })
         }
     }
 }
@@ -75,4 +87,7 @@ g.addEdge(3, 6)
 console.log(g.getEdges(1))
 // console.log(g)
 g.bft(1)
-g.dft_iterative(1)
+console.log('********************')
+g.dftIterative(1)
+console.log('********************')
+g.dftRecursive(1)

@@ -71,6 +71,26 @@ class Graph {
             })
         }
     }
+    bfs(startingVertex, target) {
+        let visited = new Set()
+        let q = new Queue()
+        q.enqueue([startingVertex])
+        while(q.length > 0) {
+            let path = q.dequeue()
+            let vertex = path[path.length-1]
+            if(!visited.has(vertex)) {
+                if(vertex === target) {
+                    return path
+                }
+                visited.add(vertex)
+                this.vertices[vertex].forEach(edge => {
+                    let newPath = [...path]
+                    newPath.push(edge)
+                    q.enqueue(newPath)
+                })
+            }
+        }
+    }
 }
 let g = new Graph()
 g.addVertices(1)
@@ -85,9 +105,11 @@ g.addEdge(1, 3)
 g.addEdge(2, 5)
 g.addEdge(3, 6)
 console.log(g.getEdges(1))
-// console.log(g)
+console.log(g)
 g.bft(1)
 console.log('********************')
 g.dftIterative(1)
 console.log('********************')
 g.dftRecursive(1)
+console.log('********************')
+console.log(g.bfs(1,5))

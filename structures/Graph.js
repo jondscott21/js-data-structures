@@ -111,6 +111,28 @@ class Graph {
             }
         }
     }
+    dfsRecursive(startingVertex, target, path=null, visited=null) {
+        if(visited === null) {
+            visited = new Set()
+        }
+        if(path === null) {
+            path = [startingVertex]
+        }
+        else {
+            path.push(startingVertex)
+        }
+        if(startingVertex === target) {
+            return path
+        }
+        for(let edge of this.vertices[startingVertex]) {
+            if(!visited.has(edge)) {
+                let newPath = this.dfsRecursive(edge, target, [...path])
+                if(newPath) {
+                    return newPath
+                }
+            }
+        }
+    }
 }
 let g = new Graph()
 g.addVertices(1)
@@ -133,3 +155,5 @@ console.log('********************')
 g.dftRecursive(1)
 console.log('********************')
 console.log(g.bfs(1,5))
+console.log('********************')
+console.log(g.dfsRecursive(1,5))

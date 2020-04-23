@@ -91,6 +91,26 @@ class Graph {
             }
         }
     }
+    dfs(startingVertex, target) {
+        let visited = new Set()
+        let s = new Stack()
+        s.push([startingVertex])
+        while(s.length > 0) {
+            let path = s.pop()
+            let vertex = path[path.length-1]
+            if(!visited.has(vertex)) {
+                if(vertex === target) {
+                    return path
+                }
+                visited.add(vertex)
+                this.vertices[vertex].forEach(edge => {
+                    let newPath = [...path]
+                    newPath.push(edge)
+                    s.push(newPath)
+                })
+            }
+        }
+    }
 }
 let g = new Graph()
 g.addVertices(1)
